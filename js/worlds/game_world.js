@@ -23,7 +23,7 @@ class game_world extends world {
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ]
 
-    var map_gen = new map_generator(20)
+    var map_gen = new map_generator(50)
     t.add(map_gen)
     var map1 = map_gen.create_map()
     

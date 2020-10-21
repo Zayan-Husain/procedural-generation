@@ -57,6 +57,12 @@ class tilemap extends yentity
       // p.th = t.tileh
       t.world.add(p)
     }
+    if (id == 2) {
+      var e = new enemy(x, y)
+      // e.tw = t.tilew
+      // e.th = t.tileh
+      t.world.add(e)
+    }
   }//end gen tile
   
 }//end class

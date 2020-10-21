@@ -15,6 +15,7 @@ class map_generator extends yentity
     this.empty_space_ratio = 0.8
     this.map_size = size2
     this.map = []
+    this.max_enemies = 10
   }//end constructor
   
   update()
@@ -34,6 +35,7 @@ class map_generator extends yentity
       }
     }
     t.generate_player()
+    t.generate_enemies()
     return t.map;
   } //end create map
 
@@ -64,6 +66,17 @@ class map_generator extends yentity
     }
     t.map[player_pos[0]][player_pos[1]] = 3
   } // end generate player
+  
+  generate_enemies() {
+    var t = this;
+    for(var i = 0; i < Math.round(t.max_enemies * Math.random()); i++) {
+      var enemy_pos = t.find_empty()
+      while (enemy_pos === 0) {
+        enemy_pos = t.find_empty()
+      }
+      t.map[enemy_pos[0]][enemy_pos[1]] = 2
+    }
+  }
   
   
 }//end class
