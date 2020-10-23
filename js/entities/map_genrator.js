@@ -16,6 +16,7 @@ class map_generator extends yentity
     this.map_size = size2
     this.map = []
     this.max_enemies = 10
+    this.max_collectables = 20
   }//end constructor
   
   update()
@@ -60,22 +61,31 @@ class map_generator extends yentity
   } // end find empty
   generate_player() {
     var t = this;
-    var player_pos = t.find_empty()
-    while (player_pos === 0) {
-      player_pos = t.find_empty()
-    }
+    var player_pos = t.find_pos()
     t.map[player_pos[0]][player_pos[1]] = 3
   } // end generate player
   
   generate_enemies() {
     var t = this;
-    for(var i = 0; i < Math.round(t.max_enemies * Math.random()); i++) {
-      var enemy_pos = t.find_empty()
-      while (enemy_pos === 0) {
-        enemy_pos = t.find_empty()
-      }
+    for(var i = 0; i < Math.round(t.max_enemies * Math.random()) + 3; i++) {
+      var enemy_pos = t.find_pos()
       t.map[enemy_pos[0]][enemy_pos[1]] = 2
     }
+  }
+  generate_collectables() {
+    var t = this;
+    for(var i = 0; i < Math.round(t.max_collectables * Math.random()) + 7; i++) {
+      var collectable_pos = t.find_pos()
+      t.map[collectable_pos[0]][collectable_pos[1]] = 4
+    }
+  }
+  find_pos() {
+    var t = this
+    var pos = t.find_empty()
+    while (pos === 0) {
+      pos = t.find_empty()
+    }
+    return pos
   }
   
   

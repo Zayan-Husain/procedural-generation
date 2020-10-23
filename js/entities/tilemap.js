@@ -42,9 +42,6 @@ class tilemap extends yentity
 
   gen_tile(x, y, id) {
     var t = this;
-    if (id == 0) {
-      return;
-    }
     
     if (id == 1) {
       var ytile = new tile(x, y, id);
