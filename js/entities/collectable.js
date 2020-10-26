@@ -28,7 +28,9 @@ class collectable extends yentity
 
     if(pl) {
         if(t.type === "coin") pl.score += t.coin_inc
-        if(t.type === "ammo" && pl.ammo === 0) pl.ammo += 2
+        if(t.type === "ammo" && pl.ammo === 0) {
+          pl.ammo += 2
+        }
         t.world.remove(t)
     }
   }//end hit

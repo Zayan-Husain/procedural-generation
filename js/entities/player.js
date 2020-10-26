@@ -8,6 +8,8 @@ class player extends yentity
     this.type = "player";
     this.grafic_type = "none";
     this.moving;
+    this.ammo = 2;
+    this.max_ammo = 2;
   }//end constructor
   
   update()
@@ -27,8 +29,15 @@ class player extends yentity
 
   shoot() {
     var t = this;
+    if(t.ammo <= 0)return;
+    //mouseIsPressed: drawing
     if(mouseWentUp()) {
       t.moving = true
+      var b = new bullet(t.x,t.y,camera.mouseX,camera.mouseY)
+      t.world.add(b)
+      console.log(t.ammo)
+      t.ammo--
+      console.log(t.ammo)
     }
   }
 

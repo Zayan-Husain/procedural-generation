@@ -1,7 +1,7 @@
 class game_world extends world {
   constructor(name2, wh2) {
     super(name2);
-
+    
   }
 
   init() {
@@ -12,14 +12,14 @@ class game_world extends world {
 
     var testmap = [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 3, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 5, 5, 0, 0, 0, 1],
+      [1, 0, 0, 0, 5, 5, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 0, 0, 0, 2, 1],
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ]
 
@@ -28,8 +28,8 @@ class game_world extends world {
     var map1 = map_gen.create_map()
     
     
-
-    var tmap = new tilemap(map1)
+    //testmap: drawing
+    var tmap = new tilemap(testmap)
     t.add(tmap)
     tmap.draw_map()
 

@@ -43,22 +43,28 @@ class tilemap extends yentity
   gen_tile(x, y, id) {
     var t = this;
     
-    if (id == 1) {
+    if (id == 1) {//wall
       var ytile = new tile(x, y, id);
       ytile.type = "wall";
       t.world.add(ytile);
     }
-    if (id == 3) {
+    if (id == 3) {//player
       var p = new player(x, y)
       // p.tw = t.tilew
       // p.th = t.tileh
       t.world.add(p)
+      t.world.p = p
     }
-    if (id == 2) {
+    if (id == 2) {//enemy
       var e = new enemy(x, y)
       // e.tw = t.tilew
       // e.th = t.tileh
       t.world.add(e)
+    }
+    if (id === 5) {//ammo
+      var c = new collectable(x,y)
+      c.type = "ammo"
+      t.world.add(c)
     }
   }//end gen tile
   
