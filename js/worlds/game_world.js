@@ -1,7 +1,8 @@
 class game_world extends world {
   constructor(name2, wh2) {
     super(name2);
-    
+    this.score = 0;
+    this.level = 1;
   }
 
   init() {
@@ -29,9 +30,14 @@ class game_world extends world {
     
     
     //testmap: drawing
-    var tmap = new tilemap(testmap)
+    var tmap = new tilemap(map1)
     t.add(tmap)
     tmap.draw_map()
+
+    for(var i of t.entitys) {
+      i.tw = tmap.tilew
+      i.th = tmap.tileh
+    }
 
   }
 

@@ -13,6 +13,17 @@ class collectable extends yentity
       this.coin_inc = 50 //coin increment value
   }//end constructor
   
+  init() {
+    super.init();
+    var t = this;
+    if(t.type === "coin") {
+      this.sprite.draw = function() {
+        fill(color(255, 255, 0))
+        ellipse(0, 0, 20, 20)
+      }
+    }
+  }
+
   update()
   {
 	var t = this;
@@ -27,10 +38,24 @@ class collectable extends yentity
     var pl = t.collide("player")
 
     if(pl) {
-        if(t.type === "coin") pl.score += t.coin_inc
-        if(t.type === "ammo" && pl.ammo === 0) {
-          pl.ammo += 2
+        if(t.type === "coin") {
+          t.world.score += t.coin_inc;
+          pl.coins++;
+          var pos = t.get_by_type("map_genrator")[0].find_pos()
+          var ncx = pos[1]*t.tw
+          var ncy = pos[0]*t.th
+          console.log(t.tw,t.th)
+          var nc = new collectable(ncx, ncy)//new coin
+          nc.type = "coin"
+          nc.tw = t.tw
+          nc.th = t.th
+          t.world.add(nc)
         }
+        if(t.type === "exit") {
+          t.world.level++;
+          t.world.init()
+        }
+        if(t.type === "ammo" && pl.ammo === 0) pl.ammo += 2
         t.world.remove(t)
     }
   }//end hit

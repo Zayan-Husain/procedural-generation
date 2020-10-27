@@ -10,6 +10,7 @@ class player extends yentity
     this.moving;
     this.ammo = 2;
     this.max_ammo = 2;
+    this.coins = 0;
   }//end constructor
   
   update()
@@ -23,7 +24,7 @@ class player extends yentity
 
   hit() {
     var t = this;
-    t.collide("wall")
+    //t.collide("wall")
     //t.collide("enemy")
   }
 
@@ -49,17 +50,17 @@ class player extends yentity
     if (keyDown('a')) {
         t.move_by(-t.speed, 0);
         t.moving = true;
-        return
+        // return
     }
     if (keyDown('d')) {
         t.move_by(t.speed, 0);
         t.moving = true;
-        return
+        // return
     }
     if (keyDown('s')) {
         t.move_by(0, t.speed);
         t.moving = true;
-        return
+        // return
     }
     if (keyDown('w')) {
         t.move_by(0, -t.speed);
@@ -69,7 +70,7 @@ class player extends yentity
 
   game_over() {
     var t = this
-    t.world.init()
+    //t.world.init()
   }
   
   

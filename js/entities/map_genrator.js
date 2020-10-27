@@ -37,6 +37,8 @@ class map_generator extends yentity
     }
     t.generate_player()
     t.generate_enemies()
+    t.generate_ammo()
+    t.generate_coin()
     return t.map;
   } //end create map
 
@@ -72,12 +74,17 @@ class map_generator extends yentity
       t.map[enemy_pos[0]][enemy_pos[1]] = 2
     }
   }
-  generate_collectables() {
+  generate_ammo() {
     var t = this;
     for(var i = 0; i < Math.round(t.max_collectables * Math.random()) + 7; i++) {
       var collectable_pos = t.find_pos()
-      t.map[collectable_pos[0]][collectable_pos[1]] = 4
+      t.map[collectable_pos[0]][collectable_pos[1]] = 5
     }
+  }
+  generate_coin() {
+    var t = this;
+    var collectable_pos = t.find_pos()
+    t.map[collectable_pos[0]][collectable_pos[1]] = 6
   }
   find_pos() {
     var t = this

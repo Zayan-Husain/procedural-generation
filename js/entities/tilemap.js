@@ -66,6 +66,13 @@ class tilemap extends yentity
       c.type = "ammo"
       t.world.add(c)
     }
+    if (id === 6) {//coins
+      var c = new collectable(x,y)
+      c.type = "coin"
+      c.tw = t.tilew
+      c.th = t.tileh
+      t.world.add(c)
+    }
   }//end gen tile
   
 }//end class
