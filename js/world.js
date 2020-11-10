@@ -58,15 +58,15 @@ class world {
     var e;
     for (var i in t.entitys) {
       e = t.entitys[i];
+      e.set_wh(0,0)
+      e.sprite.remove()
       t.remove(e);
     }
-    t.entitys = [];
-
+    
     //remove all p5 sprites
     for (var i = 0; i < allSprites.length; i++) {
       var s = allSprites[i];
-
-      s.remove();
+      s.remove()
     }
   } //end resetw
 

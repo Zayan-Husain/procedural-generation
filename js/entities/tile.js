@@ -11,7 +11,7 @@ class tile extends yentity {
 
     this.hitbw = 50; //hitbox width
     this.hitbh = 50;
-  } //end constructor
+  } //end constructor 
   init() {
     var t = this;
     super.init();

@@ -20,6 +20,7 @@ class yentity {
     this.grafic_type = "img";
     this.current_anim = "normal";
     this.debug;
+    this.is_clicked;
   } //end constructor
 
   init() {
@@ -161,6 +162,7 @@ class yentity {
     if (t.zi != t.sprite.depth) {
       t.sprite.depth = t.zi;
     }
+    if(this.clicked(2)) t.is_clicked = true
   } //end update
 
   render() {
@@ -205,7 +207,7 @@ class yentity {
     var t = this;
     var ret = false;
     //mouce overlaps hitbox
-    var overlapm = t.sprite.overlapPoint(mouseX, mouseY);
+    var overlapm = t.sprite.overlapPoint(camera.mouseX, camera.mouseY);
     //mouse down
     if (e == 1) {
       if (mouseIsPressed && overlapm) {

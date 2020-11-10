@@ -28,6 +28,7 @@ class map_generator extends yentity
   create_map() {
     //creates map
     var t = this;
+
     for (var i = 0; i <= t.map_size; i++) {
       for (var j = 0; j <= t.map_size; j++) {
         if (j === 0) t.map[i] = []
@@ -35,10 +36,22 @@ class map_generator extends yentity
         else t.map[i][j] = 0
       }
     }
+    var l = gaw.level;
+
+    t.generate_(2, 5)
+
+    if(l>=2) t.generate_(7,5)//teleporters
+    if(l>=3) {
+      t.generate_(4, 2)//guard enemies
+    }
+    if(l>=4) t.generate_(4, 1)//guard enemies
+    if(l>=5) t.generate_(2, 5)//guard enemies
+
+
     t.generate_player()
-    t.generate_enemies()
     t.generate_ammo()
     t.generate_coin()
+    t.generate_(8, 13) // end coin
     return t.map;
   } //end create map
 
@@ -61,19 +74,18 @@ class map_generator extends yentity
       //if faield return 0
       return 0;
   } // end find empty
+  generate_(tn,n) {
+    var t = this;
+    for(var i = 0; i < n; i++) {
+      var pos = t.find_pos()
+      t.map[pos[0]][pos[1]] = tn
+    }
+  }
   generate_player() {
     var t = this;
     var player_pos = t.find_pos()
     t.map[player_pos[0]][player_pos[1]] = 3
   } // end generate player
-  
-  generate_enemies() {
-    var t = this;
-    for(var i = 0; i < Math.round(t.max_enemies * Math.random()) + 3; i++) {
-      var enemy_pos = t.find_pos()
-      t.map[enemy_pos[0]][enemy_pos[1]] = 2
-    }
-  }
   generate_ammo() {
     var t = this;
     for(var i = 0; i < Math.round(t.max_collectables * Math.random()) + 7; i++) {
@@ -92,6 +104,7 @@ class map_generator extends yentity
     while (pos === 0) {
       pos = t.find_empty()
     }
+    
     return pos
   }
   

@@ -45,7 +45,7 @@ class tilemap extends yentity
     
     if (id == 1) {//wall
       var ytile = new tile(x, y, id);
-      ytile.type = "wall";
+      ytile.type = `wall${gaw.level}`
       t.world.add(ytile);
     }
     if (id == 3) {//player
@@ -54,11 +54,17 @@ class tilemap extends yentity
       // p.th = t.tileh
       t.world.add(p)
       t.world.p = p
+      pla = p
     }
     if (id == 2) {//enemy
       var e = new enemy(x, y)
       // e.tw = t.tilew
       // e.th = t.tileh
+      t.world.add(e)
+    }
+    if (id == 4) {//enemy
+      var e = new enemy(x, y)
+      e.mtype = 1
       t.world.add(e)
     }
     if (id === 5) {//ammo
@@ -69,6 +75,20 @@ class tilemap extends yentity
     if (id === 6) {//coins
       var c = new collectable(x,y)
       c.type = "coin"
+      c.tw = t.tilew
+      c.th = t.tileh
+      t.world.add(c)
+    }
+    if (id === 7) {//teleporters
+      var c = new collectable(x,y)
+      c.type = "teleport"
+      c.tw = t.tilew
+      c.th = t.tileh
+      t.world.add(c)
+    }
+    if(id === 8) {//ending
+      var c = new collectable(x,y)
+      c.type = "end"
       c.tw = t.tilew
       c.th = t.tileh
       t.world.add(c)
